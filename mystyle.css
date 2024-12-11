@@ -10,16 +10,54 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40%;
 }
 .form-container {
+    position: relative; /* Positioning for the pseudo-element */
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 60%;
+    z-index: 1;
 }
+
+/* Create the RGB edge effect */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px; /* Matches the main container */
+    padding: 5px; /* Thickness of the border */
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, purple, red);
+    background-size: 300%; /* Make the gradient larger for smooth animation */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude; /* WebKit-specific masking */
+    mask-composite: exclude; /* Standard masking */
+    animation: rgb-wave 5s linear infinite; /* Add animation for running effect */
+    pointer-events: none; /* Prevent interference with clicks */
+}
+
+/* Keyframes for the running gradient */
+@keyframes rgb-wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
 
 /* Keyframe for the gradient wave effect */
 @keyframes color-wave {
@@ -93,7 +131,7 @@ td {
 }
 
 input, textarea, select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -105,7 +143,7 @@ input[type="radio"], input[type="checkbox"] {
 
 input[type="submit"], input[type="reset"] {
     width: 48%;
-    background-color: rgb(132, 12, 146);
+    background-color: rgb(147, 9, 162);
     color: white;
     border: none;
     padding: 10px;
@@ -121,13 +159,13 @@ input[type="reset"]:hover {
 }
 /* เพิ่มสไตล์เมื่อ hover ฟิลด์ input, textarea และ select */
 input:hover, textarea:hover, select:hover {
-    background-color: #8f10a0;
+    background-color: #cb82d4;
 }
 
 /* เพิ่มสไตล์เมื่อ focus ฟิลด์ */
 input:focus, textarea:focus, select:focus {
     outline: none;
     border: 2px solid #c933e199;
-    box-shadow: 0 0 5px rgba(199, 44, 242, 0.674);
+    box-shadow: 0 0 5px rgba(200, 85, 232, 0.674);
     background-color: #fff0f5;
 }
