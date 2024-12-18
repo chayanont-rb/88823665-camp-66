@@ -5,100 +5,147 @@
     <title>CSS</title>
     <meta charset="UTF-8"> <!--สามารถกำหนดรูปแบบภาษได้ **ออกสอบ** -->
     <!-- <link rel="stylesheet" href="mystyle.css" />  -->
-     <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="mystyle.css">
     <!-- http://localhost/88823665-camp-66/mystyle.css -->
     <!-- http://localhost/mystyle.css -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" hre f="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <linkhref="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="form-container">
-        <div class="retrowave-text">Workshop #HTML - FORM</div>
-    <form>
-        <table>
-            <tr><!-- ชื่อ -->
-                <td><label class="myh1" for="fname">ชื่อ</label></td>
-                <td><input type="text" id="fname" name="fname"></td>
-            </tr>
+    <div class="container mt-3">
+        <form > 
 
-            <tr><!-- สกุล -->
-                <td><label for="lname">สกุล</label></td>
-                <td><input type="text" id="lname" name="lname"></td>
-            </tr>
+          <div class="row mb-2">
+            <div class="col-4"><label class="form-label" for="fname">ชื่อ <span class="text-danger">*</span></label></div>
+            <div class="col"><input class="form-control" type="text" id="fname" placeholder="ชื่อ" name="ชื่อ"></div>
+        </div>
 
-            <tr><!-- วัน/เดือน/ปีเกิด -->
-                <td><label for="birthdate">วัน/เดือน/ปีเกิด</label></td>
-                <td><input type="date" id="birthdate" name="birthdate"></td>
-            </tr>
+        <div class="row mb-2">
+            <div class="col-4"><label class="form-label" class="form-label" for="lname"> สกุล</label></div>
+            <div class="col"><input class="form-control" type="text" id="lname" name="สกุล"></div>
+        </div>
+        
+        <div class="row mb-2">
+            <div class="col-4"><label class="form-label" for="birth"> วัน/เดือน/ปีเกิด</label></div>
+            <div class="col"><input class="form-control"  type="date" id="birth" name="วัน/เดือน/ปีเกิด"></div>
+        </div>
+        
+        <div class="row mb-2">
+            <div class="col-4"><label class="form-label" for="age"> อายุ</label></div>
+            <div class="col"><input class="form-control"  type="number" id="age" name="อายุ"></div>
+        </div>
+        
+        <div class="row mb-2">
+            <div class="col-4"><label class="form-label" for="sex"> เพศ</label></div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="เพศ" id="ชาย">
+                    <label class="form-check-label" for="ชาย">
+                        ชาย
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="เพศ" id="หญิง">
+                    <label class="form-check-label" for="หญิง">
+                        หญิง
+                    </label>
+                </div>
+            </div>
+        </div>
+        
 
-            <tr><!-- อายุ -->
-                <td><label for="age">อายุ</label></td>
-                <td><input type="number" id="age" name="age"></td>
-            </tr>
+        <div class="row mb-2">
+            <div class="col-4">
+                <label class="form-label" for="image"> รูป</label>
+            </div>
+            <div class="col">
+                <input class="form-control"  type="file" id="image" name="รูป">
+            </div>
+        </div>
+        
 
-            <tr><!-- เพศ -->
-                <td><label>เพศ</label></td>
-                <td>
-                    <input type="radio" id="male" name="gender" value="ชาย">
-                    <label for="male">ชาย</label>
-                    <input type="radio" id="female" name="gender" value="หญิง">
-                    <label for="female">หญิง</label>
-                </td>
-            </tr>
+        <div class="row mb-2">
+            <div class="col-4">
+                <label class="form-label" for="address"> ที่อยู่</label>
+            </div>
+            <div class="col">
+                <textarea class="form-control"  id="address" rows="5" cols="50"></textarea>
+            </div>
+        </div>
+           
 
-            <!-- รูป -->
-            <tr>
-                <td><label for="photo">รูป</label></td>
-                <td><input type="file" id="photo" name="photo"></td>
-            </tr>
-
-            <tr><!-- ที่อยู่ -->
-                <td><label for="address">ที่อยู่</label></td>
-                <td><textarea id="address" name="address" rows="4" cols="50"></textarea></td>
-            </tr>
-
-            <tr><!-- สีที่ชอบ -->
-                <td><label for="favoriteColor">สีที่ชอบ</label></td>
-                <td>
-                    <select id="favoriteColor" name="favoriteColor">
+              <div class="row mb-2">
+                <div class="col-4">
+                    <label class="form-label" for="color"> สีที่ชอบ</label>
+                </div>
+                <div class="col">
+                    <select class="form-control"  id="color" name="dropdown">
                         <option value="red">สีแดง</option>
-                        <option value="blue">สีน้ำเงิน</option>
                         <option value="green">สีเขียว</option>
                         <option value="yellow">สีเหลือง</option>
-                </td>
-                </select>
-            </tr>
+                        <option value="blue">สีฟ้า</option>
+                        <option value="purple">สีม่วง</option>
+                        <option value="orange">สีส้ม</option>
+                        <option value="pink">สีชมพู</option>
+                        <option value="gray">สีเทา</option>
+                        <option value="black">สีดำ</option>
+                        <option value="white">สีขาว</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row mb-2">
+              <div class="col-4">
+                  <label class="form-label" for="song"> เพลงที่ชอบ</label>
+              </div>
+              <div class="col">
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="song" id="เพื่อชีวิต">
+                      <label class="form-check-label" for="เพื่อชีวิต">
+                          เพื่อชีวิต
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="song" id="ลูกทุ่ง">
+                      <label class="form-check-label" for="ลูกทุ่ง">
+                          ลูกทุ่ง
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="song" id="อื่นๆ">
+                      <label class="form-check-label" for="อื่นๆ">
+                          อื่นๆ
+                      </label>
+                  </div>
+              </div>
+          </div>
 
-            <tr><!-- แนวเพลงที่ชอบ -->
-                <td><label>แนวเพลงที่ชอบ</label></td>
-                <td>
-                    <input type="checkbox" id="lifeMusic" name="music" value="เพื่อชีวิต">
-                    <label for="lifeMusic">เพื่อชีวิต</label>
-                    <input type="checkbox" id="countryMusic" name="music" value="ลูกทุ่ง">
-                    <label for="countryMusic">ลูกทุ่ง</label>
-                    <input type="checkbox" id="otherMusic" name="music" value="อื่นๆ">
-                    <label for="otherMusic">อื่นๆ</label>
-                </td>
-            </tr>
+          <div class="row mb-4">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      ยินยอมให้เก็บข้อมูล
+                    </label>
+                  </div>
+            </div>
+        </div>
 
-            <tr><!-- ยินยอมให้เก็บข้อมูล -->
-                <td>
-                    <input type="checkbox" id="agree" name="agree">
-                    <label for="agree">ยินยอมให้เก็บข้อมูล</label>
-                </td>
-            </tr>
-
-            <tr><!-- Buttons -->
-                <td><input type="reset" value="Reset"></td>
-                <td><input type="submit" value="Submit"></td>
-            </tr>
-        </table>
-    </form>
-</div>
+            <div class="row mb-2">
+              <div class="col">
+                  <button type="reset" class="btn btn-secondary float-start">Reset</button>
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+               
+    </form>    
 </body>
 
 </html>
