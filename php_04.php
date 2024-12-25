@@ -1,133 +1,114 @@
+<?php
+/**
+ * แสดงข้อมูลตัวเลข จาก $start ถึง $end ว่าเป็นเลขคู่ หรือ เลขคี่ โดยรับค่าจาก FORM
+ */
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ตรวจสอบเลขคู่หรือเลขคี่</title>
+    <title>แสดงเลขคู่หรือเลขคี่</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #fdfdfd;
+            background-color: #121212; /* สีพื้นหลังเข้ม */
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #333;
+            text-align: center;
+            color: #ddd; /* สีข้อความหลัก */
         }
-        h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+        h1, h2 {
+            color: #b39ddb; /* สีม่วง */
         }
         form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
             margin-bottom: 20px;
         }
-        form label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
         input[type="number"] {
-            width: calc(100% - 20px);
             padding: 10px;
             font-size: 16px;
-            margin: 10px 0 20px;
-            border: 1px solid #ddd;
+            width: 200px;
+            margin: 5px;
+            border: 1px solid #444;
             border-radius: 5px;
-            outline: none;
-            transition: border-color 0.2s;
+            background-color: #1e1e1e; /* สีพื้นหลังช่องกรอก */
+            color: #ddd;
         }
-        input[type="number"]:focus {
-            border-color: #007BFF;
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 15px;
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #7e57c2; /* สีม่วง */
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.2s;
         }
-        button:hover {
-            background-color: #0056b3;
+        input[type="submit"]:hover {
+            background-color: #5e35b1; /* สีม่วงเข้มเมื่อ hover */
         }
         table {
+            margin: 20px auto;
             border-collapse: collapse;
-            width: 100%;
+            width: 60%;
             max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #1e1e1e; /* สีพื้นหลังของตาราง */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         table th, table td {
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #444;
+            color: #ddd; /* สีข้อความในตาราง */
         }
         table th {
-            background-color: #007BFF;
-            color: #fff;
-            font-size: 16px;
+            background-color: #7e57c2; /* สีม่วง */
+            color: #fff; /* สีข้อความในหัวตาราง */
+            font-size: 18px;
         }
         table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #292929; /* สีพื้นหลังแถวคู่ */
         }
         table tr:hover {
-            background-color: #f1f1f1;
+            background-color: #333; /* สีพื้นหลังเมื่อ hover */
         }
         p {
-            color: red;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #f44336; /* สีแดงสำหรับข้อความผิดพลาด */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ตรวจสอบเลขคู่หรือเลขคี่</h1>
-        <form method="post">
-            <label for="start">เริ่มต้น:</label>
-            <input type="number" id="start" name="start" placeholder="เช่น 1" required>
-            <label for="end">สิ้นสุด:</label>
-            <input type="number" id="end" name="end" placeholder="เช่น 10" required>
-            <button type="submit">แสดงผล</button>
-        </form>
+    <h1>เลขคู่หรือเลขคี่</h1>
+    <form method="post" action="">
+        <label for="start">เริ่มต้น:</label>
+        <input type="number" id="start" name="start" required>
+        <label for="end">สิ้นสุด:</label>
+        <input type="number" id="end" name="end" required>
+        <input type="submit" value="แสดงผล">
+    </form>
 
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $start = intval($_POST['start']);
-            $end = intval($_POST['end']);
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["start"]) && isset($_POST["end"])) {
+        $start = intval($_POST["start"]);
+        $end = intval($_POST["end"]);
 
-            if ($start <= $end) {
-                echo "<h2>ตัวเลขตั้งแต่ $start ถึง $end</h2>";
-                echo "<table>";
-                echo "<tr><th>ตัวเลข</th><th>ประเภท</th></tr>";
-                for ($i = $start; $i <= $end; $i++) {
-                    $type = ($i % 2 == 0) ? "เลขคู่" : "เลขคี่";
-                    echo "<tr><td>$i</td><td>$type</td></tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<p>กรุณาใส่ค่าเริ่มต้นที่น้อยกว่าหรือเท่ากับค่าสิ้นสุด</p>";
+        if ($start > $end) {
+            echo "<p>ค่าเริ่มต้นต้องน้อยกว่าค่าสิ้นสุด!</p>";
+        } else {
+            echo "<h2>ตัวเลขตั้งแต่ $start ถึง $end</h2>";
+            echo "<table>";
+            echo "<tr><th>ตัวเลข</th><th>ประเภท</th></tr>";
+
+            for ($i = $start; $i <= $end; $i++) {
+                $type = ($i % 2 === 0) ? "เลขคู่" : "เลขคี่";
+                echo "<tr>";
+                echo "<td>$i</td>";
+                echo "<td>$type</td>";
+                echo "</tr>";
             }
+
+            echo "</table>";
         }
-        ?>
-    </div>
+    }
+    ?>
 </body>
 </html>

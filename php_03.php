@@ -1,3 +1,8 @@
+<?php
+/**
+ * แสดงตารางสูตรคูณ ตามแม่สูตรคูณที่ระบุค่าจาก FORM
+ */
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -6,99 +11,95 @@
     <title>ตารางสูตรคูณ</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* สีพื้นหลังเข้ม */
             margin: 0;
             padding: 20px;
             text-align: center;
+            color: #ddd; /* สีข้อความหลัก */
         }
         h1 {
-            color: #333;
+            color: #b39ddb; /* สีม่วง */
         }
         form {
-            margin-bottom: 20px;
+            margin: 20px auto;
+            width: 300px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-        label {
-            font-size: 18px;
-            color: #555;
-        }
-        input[type="number"] {
-            padding: 8px;
-            font-size: 16px;
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #444;
             border-radius: 5px;
-            width: 150px;
+            background-color: #292929;
+            color: #ddd;
         }
-        button {
+        form input[type="submit"] {
             padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007BFF;
             border: none;
             border-radius: 5px;
+            background-color: #7e57c2;
+            color: #fff;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #0056b3;
+        form input[type="submit"]:hover {
+            background-color: #9575cd;
         }
         table {
-            margin: 0 auto;
+            margin: 20px auto;
             border-collapse: collapse;
             width: 50%;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #1e1e1e; /* สีพื้นหลังของตาราง */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         table th, table td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
+            border: 1px solid #444;
+            color: #ddd; /* สีข้อความในตาราง */
         }
         table th {
-            background-color: #007BFF;
-            color: #fff;
+            background-color: #7e57c2; /* สีม่วง */
+            color: #fff; /* สีข้อความในหัวตาราง */
+            font-size: 18px;
         }
         table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #292929; /* สีพื้นหลังแถวคู่ */
         }
         table tr:hover {
-            background-color: #f1f1f1;
-        }
-        p {
-            color: red;
-            font-weight: bold;
+            background-color: #333; /* สีพื้นหลังเมื่อ hover */
         }
     </style>
 </head>
 <body>
     <h1>ตารางสูตรคูณ</h1>
-    <form method="post">
-        <label for="number">กรุณาใส่แม่สูตรคูณ:</label>
-        <input type="number" id="number" name="number" required>
-        <button type="submit">แสดงตาราง</button>
+    <form method="POST">
+        <label for="multiplier">กรอกแม่สูตรคูณ:</label>
+        <input type="number" name="multiplier" id="multiplier" placeholder="เช่น 5" required>
+        <input type="submit" value="แสดงตารางสูตรคูณ">
     </form>
 
     <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // รับค่าจากฟอร์ม
-        $number = intval($_POST['number']);
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $multiplier = intval($_POST["multiplier"]);
 
-        // ตรวจสอบว่าแม่สูตรคูณเป็นค่าบวก
-        if ($number > 0) {
-            echo "<h2>แม่สูตรคูณ $number</h2>";
-            echo "<table>";
-            echo "<tr><th>สูตร</th><th>ผลลัพธ์</th></tr>";
-            for ($i = 1; $i <= 12; $i++) {
-                $result = $number * $i;
-                echo "<tr>";
-                echo "<td>$number x $i</td>";
-                echo "<td>$result</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "<p>กรุณากรอกตัวเลขที่มากกว่า 0</p>";
+        echo "<h2>แม่สูตรคูณ: $multiplier</h2>";
+        echo "<table>";
+        echo "<tr><th>ตัวเลข</th><th>ผลลัพธ์</th></tr>";
+
+        for ($i = 1; $i <= 12; $i++) {
+            $result = $multiplier * $i;
+            echo "<tr>";
+            echo "<td>$multiplier × $i</td>";
+            echo "<td>$result</td>";
+            echo "</tr>";
         }
+
+        echo "</table>";
     }
     ?>
 </body>

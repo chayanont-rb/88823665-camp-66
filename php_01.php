@@ -1,34 +1,71 @@
 <?php
 /**
- * แสดงตารางสูตรคูณ ตามแม่สูตรคูณในตัวแปร
+ * แสดงตารางสูตรคูณ ตามแม่สูตรคูณที่ระบุในตัวแปร
  */
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>ตารางสูตรคูณ</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* สีพื้นหลังเข้ม */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #ddd; /* สีข้อความหลัก */
+        }
+        h1, h2 {
+            color: #b39ddb; /* สีม่วง */
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+            background-color: #1e1e1e; /* สีพื้นหลังของตาราง */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #444;
+            color: #ddd; /* สีข้อความในตาราง */
+        }
+        table th {
+            background-color: #7e57c2; /* สีม่วง */
+            color: #fff; /* สีข้อความในหัวตาราง */
+            font-size: 18px;
+        }
+        table tr:nth-child(even) {
+            background-color: #292929; /* สีพื้นหลังแถวคู่ */
+        }
+        table tr:hover {
+            background-color: #333; /* สีพื้นหลังเมื่อ hover */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <?php
-        $my_var = 2;
-        ?>
-        <h1>สูตรคูณแม่ <?php echo $my_var; ?></h1>
-        <div class="row">
-            <div class="col h2 text-end">
-                <?php
-               for($i=1; $i<= 12; $i++){
-                echo $my_var." x ".$i." = ".$my_var*$i;
-                echo "<br>";
-            }
-                ?>
-</div>
-<div class ="col h2 text-start">
-</div>
+    <h1>ตารางสูตรคูณ</h1>
+    
+    <?php
+    $multiplier = 5; // กำหนดแม่สูตรคูณที่ต้องการ
+    
+    echo "<h2>แม่สูตรคูณ: $multiplier</h2>";
+    echo "<table>";
+    echo "<tr><th>ตัวเลข</th><th>ผลลัพธ์</th></tr>";
+    
+    for ($i = 1; $i <= 12; $i++) {
+        $result = $multiplier * $i;
+        echo "<tr>";
+        echo "<td>$multiplier × $i</td>";
+        echo "<td>$result</td>";
+        echo "</tr>";
+    }
+    
+    echo "</table>";
+    ?>
 </body>
 </html>
-
