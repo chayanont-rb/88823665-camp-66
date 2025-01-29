@@ -45,6 +45,7 @@
 
     <link rel="stylesheet" href=" {{url('public/css/adminlte.css')}}" />
     <!--end::Required Plugin(AdminLTE)-->
+    @yield('styles')
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -94,6 +95,7 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
+    @yield('scripts')
   </body>
   <!--end::Body-->
 </html>
