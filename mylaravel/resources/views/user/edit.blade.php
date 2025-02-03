@@ -14,18 +14,18 @@
         </div>
         <div class="card-body register-card-body">
           <p class="register-box-msg">Register a new membership</p>
-          <form action="{{ url('/register') }}" method="post">
+          <form action="{{ url('/user') }}" method="post">
             @csrf
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="registerFullName" name="name" type="text" class="form-control" placeholder="" />
+                <input id="registerFullName" value="{{ $user->name }}" name="name" type="text" class="form-control" placeholder="" />
                 <label for="registerFullName">Full Name</label>
               </div>
               <div class="input-group-text"><span class="bi bi-person"></span></div>
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="registerEmail" name="email" type="email" class="form-control" placeholder="" />
+                <input id="registerEmail" value="{{ $user->email }}" name="email" type="email" class="form-control" placeholder="" />
                 <label for="registerEmail">Email</label>
               </div>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>
