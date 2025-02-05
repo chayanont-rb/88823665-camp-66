@@ -18,11 +18,11 @@ class UserController extends Controller
     function edit($id){
         $user = User::find($id);
         $data['user'] = $user;
-        return vieww('user.edit', $data);
+        return view('user.edit', $data);
     }
 
     function edit_action(Request $req){
-        print_r($req->input());
+        //print_r($req->input());
         $muser = User::find($req->id);
         $muser->name = $req->name;
         $muser->email = $req->email;
