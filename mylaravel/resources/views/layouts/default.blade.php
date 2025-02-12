@@ -51,6 +51,8 @@
   <!--begin::Body-->
   <body class="login-page bg-body-secondary">
    @yield('content')
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- /.login-box -->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
@@ -71,7 +73,7 @@
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="public/js/adminlte.js"></script>
+    <script src="{{ url('public/js/adminlte.js') }}"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';

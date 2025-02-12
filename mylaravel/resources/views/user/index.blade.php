@@ -26,11 +26,11 @@
                     <a href ="{{url('/user/'.$user->id)}}">
                         <button class="btn btn-warning">Edit</button>
                     </a>
-                    <form action="{{ url('/user') }}" method="post" style="display: inline;">
+                    <form action="{{ url('/user') }}" onsubmit="return confirm_delete(event)" method="post" style="display: inline;">
                         @csrf
                         @method('delete')
                         <input type="hidden" name="id" value="{{ $user->id }}" >
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" onclick="confirm_delete()" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
               </tr>
@@ -49,7 +49,31 @@
           </ul>
         </div>
       </div>
+      <button class="btn" onclick="confirm_delete()">Click Me</button>
       <!-- /.card -->
     </div>
 </div>
+@endsection
+
+@section('scripts')
+  <script>
+  function confirm_delete(event) {
+    event.preventDefault(); // Prevent form submission
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            event.target.submit(); // Submit form if confirmed
+        }
+    });
+    return false; // Stop default behavior
+}
+
+</script>
 @endsection
