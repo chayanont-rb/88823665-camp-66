@@ -1,8 +1,11 @@
 @extends('layouts.default_with_menu')
 
 @section('content')
+
+<h1>{{ session('users')->name }}</h1>
+
 <div class="row">
-    <div class="col-md-12">
+  <div class="col-md-12">
       <div class="card mb-12">
         <div class="card-header"><h3 class="card-title"></h3></div>
         <!-- /.card-header -->
